@@ -1,0 +1,7 @@
+# Environment variables
+export ANT_HOME=/Applications/Apache/Ant/apache-ant-1.9.7
+export MAVEN_HOME=/Applications/Apache/Maven/apache-maven-3.3.9
+export CATALINA_HOME=/Applications/Apache/Tomcat/apache-tomcat-8.0.32
+export CONFIG_DIR=/Applications/Apache/Tomcat/apache-tomcat-8.0.32/config
+export MONGO_HOME=/Applications/mongodb-macos-x86_64-4.2.1
+export PATH=$MAVEN_HOME/bin:$ANT_HOME/bin:$PATH

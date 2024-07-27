@@ -1,0 +1,40 @@
+# Aliases
+# Terminal Command Aliases
+alias ls='ls -al'
+alias dir="ls -al | grep ^d"
+alias cls='clear'
+
+# Finder Aliases
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+
+# Python Aliases
+alias python=$(which python3)
+
+# Telepresence (AWS)
+alias tp_aws="telepresence --new-deployment $(whoami | sed 's/\.//g')-$(date +%s) --run-shell --also-proxy 6BE5521089B9FBE6086200CE5E5427D9.yl4.us-east-2.eks.amazonaws.com --also-proxy 10.213.0.0/16 --also-proxy 172.20.0.0/16"
+alias gTenant_tp_aws="telepresence --new-deployment $(whoami | sed 's/\.//g')-$(date +%s) --namespace tenant-g --run-shell --also-proxy 10.213.0.0/16 --also-proxy 172.20.0.0/16"
+alias cTenant_tp_aws="telepresence --new-deployment $(whoami | sed 's/\.//g')-$(date +%s) --namespace tenant-c --run-shell --also-proxy 10.213.0.0/16 --also-proxy 172.20.0.0/16"
+alias dxpAdmin_tp_aws="telepresence --deployment telepresence-dxp-admin --namespace dxp-admin --run-shell --also-proxy 10.213.0.0/16 --also-proxy 172.20.0.0/16"
+
+# ElasticStack Aliases
+alias elasticsearchStart='cd /Applications/ElasticStack/elasticsearch-5.4.0; clear; pwd; bin/elasticsearch'
+alias kibanaStart='cd /Applications/ElasticStack/kibana-5.4.0-darwin-x86_64; clear; pwd; bin/kibana'
+alias logstashStart='cd /Applications/ElasticStack/logstash-5.4.0; clear; pwd; bin/logstash -f logstash-java.conf'
+alias filebeatStart='cd /Applications/ElasticStack/filebeat-5.4.0-darwin-x86_64; clear; pwd; ./filebeat -e -c filebeat.yml'
+
+# Kafka Aliases
+alias kafkaLense='docker run -m 8GB -e ADV_HOST=localhost -e EULA="https://dl.lenses.stream/d/?id=ed778c87-3aa3-42ba-b2de-2616b70e565d" --rm  -p 3030:3030 -p 9092:9092 -p 8086:8081 -p 8083:8083 -p 8082:8082 -p 2181:2181 landoop/kafka-lenses-dev'
+alias startLocalKafka='cls; /Applications/Apache/Kafka/kafka_2.12-2.3.1/bin/kafka-server-start.sh  /Applications/Apache/Kafka/kafka_2.12-2.3.1/config/server.properties'
+alias startLocalZookeeperForKafka='cls; /Applications/Apache/Kafka/kafka_2.12-2.3.1/bin/zookeeper-server-start.sh  /Applications/Apache/Kafka/kafka_2.12-2.3.1/config/zookeeper.properties'
+alias stopLocalKafka='cls; /Applications/Apache/Kafka/kafka_2.12-2.3.1/bin/kafka-server-stop.sh  /Applications/Apache/Kafka/kafka_2.12-2.3.1/config/server.properties'
+alias stopLocalZookeeperForKafka='cls; /Applications/Apache/Kafka/kafka_2.12-2.3.1/bin/zookeeper-server-stop.sh  /Applications/Apache/Kafka/kafka_2.12-2.3.1/config/zookeeper.properties'
+alias consumerLocalKafka='cls; /Applications/Apache/Kafka/kafka_2.12-2.3.1/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic twitter.feed --from-beginning'
+alias producerLocalKafka='cls; /Applications/Apache/Kafka/kafka_2.12-2.3.1/bin/kafka-console-producer.sh --topic twitter.feed --broker-list localhost:9092'
+
+# Flink Aliases
+alias flinkStart='rm -f $FLINK_HOME/log/*.*;$FLINK_HOME/bin/start-cluster.sh'
+alias flinkStop='$FLINK_HOME/bin/stop-cluster.sh'
+
+# MongoDB Aliases
+alias mongodb='mongod --dbpath $MONGO_HOME/data/db'
